@@ -6,13 +6,13 @@ BIN_DIR = bin
 
 all: $(BIN_DIR)/main $(BIN_DIR)/tests
 
-$(BIN_DIR)/main: src/main.adb src/raymonds_algorithm.adb
+$(BIN_DIR)/main: main.adb raymonds_algorithm.adb
 	mkdir -p $(OBJ_DIR) $(BIN_DIR)
-	$(GNAT) -gnata -D $(OBJ_DIR) -Isrc -o $(BIN_DIR)/main src/main.adb
+	$(GNAT) -gnata -D $(OBJ_DIR) -I. -o $(BIN_DIR)/main main.adb
 
-$(BIN_DIR)/tests: tests.adb src/raymonds_algorithm.adb
+$(BIN_DIR)/tests: tests.adb raymonds_algorithm.adb
 	mkdir -p $(OBJ_DIR) $(BIN_DIR)
-	$(GNAT) -gnata -D $(OBJ_DIR) -Isrc -o $(BIN_DIR)/tests tests.adb
+	$(GNAT) -gnata -D $(OBJ_DIR) -I. -o $(BIN_DIR)/tests tests.adb
 
 test: $(BIN_DIR)/tests
 	@echo "Running tests..."

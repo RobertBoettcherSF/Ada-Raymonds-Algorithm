@@ -19,7 +19,7 @@ package Raymonds_Algorithm is
    -- Bounded arrays to avoid dynamic allocation in critical systems
    type Message_Array is array (Positive range <>) of Message;
    type Message_Buffer is record
-      Messages : Message_Array (1 .. 10);
+      Messages : array (1 .. 10) of Message;
       Count    : Natural := 0;
    end record;
 
