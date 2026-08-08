@@ -16,16 +16,21 @@ package Raymonds_Algorithm is
       Receiver : Node_Id;
    end record;
 
-   -- Bounded arrays to avoid dynamic allocation in critical systems
-   type Message_Buffer is record
-      Messages : array (1 .. 10) of Message;
-      Count    : Natural := 0;
-   end record;
 
    -- Fixed-size circular queue for Node requests
    Max_Queue : constant := 100;
+
+   -- Bounded arrays to avoid dynamic allocation in critical systems
+   type Message_List is array (1 .. 10) of Message;
+   type Node_Id_List is array (1 .. Max_Queue) of Node_Id;
+
+   type Message_Buffer is record
+      Messages : Message_List;
+      Count    : Natural := 0;
+   end record;
+
    type Node_Queue is record
-      Data  : array (1 .. Max_Queue) of Node_Id := (others => Null_Node);
+      Data  : Node_Id_List := (others => Null_Node);
       Front : Positive := 1;
       Rear  : Natural := 0;
       Count : Natural := 0;
