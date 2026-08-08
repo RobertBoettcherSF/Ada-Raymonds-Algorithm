@@ -47,6 +47,8 @@ package body Raymonds_Algorithm is
       Node.Using_CS := False;
       Node.Asked    := False;
       Node.Req_Q.Count := 0;
+      Node.Req_Q.Front := 1;
+      Node.Req_Q.Rear  := 0;
    end Initialize;
 
    -- ---------------------------------------------------------
